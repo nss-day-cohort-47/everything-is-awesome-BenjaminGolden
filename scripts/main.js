@@ -29,6 +29,16 @@ navElement.addEventListener("change", (event) => {
 	}
 })
 
+navElement.addEventListener("click", event => {
+	if (event.target.id === "searchButton") {
+		const searchElement = document.querySelector("#legoSearch")
+		searchLegoById(searchElement.value)
+	} else if (event.target.id === "showAll") {
+		makeLegoList(useLegos())
+		
+	}
+})
+
 const filterLegos = (whatFilter) => {
 	const filterArray = useLegos().filter(singleLego => {
 		if (singleLego.LegoName.includes(whatFilter)) {
@@ -38,8 +48,7 @@ const filterLegos = (whatFilter) => {
 	makeLegoList(filterArray);
 }
 
-const filterMaterial = (whatMaterial) => {
-	
+const filterMaterial = (whatMaterial) => {	
 	const materialArray = useLegos().filter(legoMaterial => {
 		if (legoMaterial.Material.includes(whatMaterial)){
 			return legoMaterial;
@@ -48,7 +57,17 @@ const filterMaterial = (whatMaterial) => {
 	makeLegoList(materialArray);
 }
 
+const searchLegoById = (searchValue) => {
+	const legoArray = []
+	 useLegos().find((specificLego) => {
+		
+		if (specificLego.LegoId === (searchValue)){
+			legoArray.push(specificLego);
+		}
+	})
 
+	makeLegoList(legoArray);
+}
 
 const startEIA = () => {
 	loadLegos()
