@@ -20,6 +20,15 @@ navElement.addEventListener("click", (event) => {
 	}
 })
 
+navElement.addEventListener("change", (event) => {
+	console.log("brick material")
+	if (event.target.id === "brickMaterial") {
+		filterLegos("Material")
+	} else if (event.target.id === "showAll") {
+		makeLegoList(useLegos())
+	}
+})
+
 const filterLegos = (whatFilter) => {
 	const filterArray = useLegos().filter(singleLego => {
 		if (singleLego.LegoName.includes(whatFilter)) {
@@ -27,6 +36,10 @@ const filterLegos = (whatFilter) => {
 		}
 	})
 	makeLegoList(filterArray);
+}
+
+const filterMaterial = (whatMaterial) => {
+	
 }
 
 
