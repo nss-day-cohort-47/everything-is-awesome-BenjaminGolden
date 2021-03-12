@@ -30,6 +30,7 @@ const filterLegos = (whatFilter) => {
 }
 
 
+
 const startEIA = () => {
 	loadLegos()
 	.then(legoArray => {
